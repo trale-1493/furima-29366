@@ -36,7 +36,7 @@
 - has_many :comments
 - has_many :favorites
 
-## purchase テーブル
+## purchases テーブル
 | Column         | Type       | Options                         |
 | -------------- | ---------- | ------------------------------- |
 | user           | references | null: false, foreign_key: true  |
@@ -62,7 +62,7 @@
 ## comments テーブル
 | Column  | Type       | Options                         |
 | ------- | ---------- | ------------------------------- |
-| content | string     | null: false                     |
+| content | text       | null: false                     |
 | user    | references | null: false, foreign_key: true  |
 | product | references | null: false, foreign_key: true  |
 ### Association
