@@ -10,5 +10,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])/}
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: 'must use mixed characters'}
 end
