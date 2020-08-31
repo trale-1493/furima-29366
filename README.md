@@ -81,7 +81,7 @@
 ## comments テーブル
 | Column  | Type       | Options                         |
 | ------- | ---------- | ------------------------------- |
-| text    | string     | null: false                     |
+| content | string     | null: false                     |
 | user    | references | null: false, foreign_key: true  |
 | product | references | null: false, foreign_key: true  |
 ### Association
