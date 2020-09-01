@@ -5,6 +5,10 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
   end
 
+  after do
+    
+  end
+
   describe 'ユーザー新規登録' do
     it "カラムの情報が揃っていれば新規登録に成功する" do
       expect(@user).to be_valid
