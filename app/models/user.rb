@@ -11,4 +11,6 @@ class User < ApplicationRecord
   validates :family_name_cana, presence: true, format:{with: /\A[ァ-ヶー－]+\z/, message: 'must use only hull Cana characters'}
   validates :first_name_cana, presence: true, format:{with: /\A[ァ-ヶー－]+\z/, message: 'must use only hull Cana characters'}
   validates :birthday, presence: true
+
+  has_many :products
 end
