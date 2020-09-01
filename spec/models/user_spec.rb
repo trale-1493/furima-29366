@@ -50,8 +50,7 @@ RSpec.describe User, type: :model do
     end
 
     it "パスワードは半角英数字混合であること" do
-      #@user.password = Faker::Name.initials(number: 9)
-      @user.password = "aaaaaaaaaaaaa"
+      @user.password = Faker::Name.initials(number: 9)
       @user.password_confirmation = @user.password
       @user.valid?
       expect(@user.errors.full_messages).to include("Password must use mixed characters")
@@ -69,24 +68,54 @@ RSpec.describe User, type: :model do
   end
 
   describe '本人情報確認' do
-    it "ユーザー本名が、名字と名前がそれぞれ必須であること" do
-
+    it "ユーザー本名の名字がそれぞれ必須であること" do
+      @user.family_name = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name can't be blank")
+    end
+    it "ユーザー本名の名前がそれぞれ必須であること" do
+      @user.first_name = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name can't be blank")
     end
 
-    it "ユーザー本名は全角（漢字・ひらがな・カタカナ）で入力させること" do
-
+    it "ユーザー本名の苗字は全角（漢字・ひらがな・カタカナ）で入力させること" do
+      @user.family_name = Faker::Name.last_name
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name must use only hull characters")
+    end
+    it "ユーザー本名の名前は全角（漢字・ひらがな・カタカナ）で入力させること" do
+      @user.first_name = Faker::Name.first_name
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name must use only hull characters")
     end
 
-    it "ユーザー本名のフリガナが、名字と名前でそれぞれ必須であること" do
-
+    it "ユーザー本名のフリガナの名字がそれぞれ必須であること" do
+      @user.family_name_cana = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name cana can't be blank")
+    end
+    it "ユーザー本名のフリガナの名前がそれぞれ必須であること" do
+      @user.first_name_cana = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name cana can't be blank")
     end
 
-    it "ユーザー本名のフリガナは全角（カタカナ）で入力させること" do
-
+    it "ユーザー本名の苗字のフリガナは全角（カタカナ）で入力させること" do
+      @user.family_name_cana = @user.family_name
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name cana must use only hull Cana characters")
+    end
+    it "ユーザー本名のの名前フリガナは全角（カタカナ）で入力させること" do
+      @user.first_name_cana = @user.first_name
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name cana must use only hull Cana characters")
     end
 
     it "生年月日が必須であること" do
-
+      @user.birthday = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Birthday can't be blank")
     end
   end
 end
