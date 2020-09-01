@@ -17,13 +17,15 @@ ActiveRecord::Schema.define(version: 2020_09_01_081637) do
     t.string "image", null: false
     t.integer "value", null: false
     t.text "explain", null: false
-    t.integer "category", null: false
-    t.integer "condition", null: false
-    t.integer "delivery_payer", null: false
-    t.integer "region", null: false
-    t.integer "delivery_span", null: false
+    t.integer "category_id", null: false
+    t.integer "condition_id", null: false
+    t.integer "delivery_payer_id", null: false
+    t.integer "region_id", null: false
+    t.integer "delivery_span_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -44,4 +46,5 @@ ActiveRecord::Schema.define(version: 2020_09_01_081637) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "products", "users"
 end
