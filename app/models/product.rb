@@ -6,6 +6,8 @@ class Product < ApplicationRecord
   belongs_to_active_hash :region
   belongs_to_active_hash :delivery_span
 
+  has_one_attached :image
+
   validates :name, :image, :value, :explain, :category_id,
             :condition_id, :delivery_payer_id, :region_id, :delivery_span_id, presence: true
   validates :category_id, :condition_id, :delivery_payer_id, :region_id, :delivery_span_id, numericality: {other_than: 1}

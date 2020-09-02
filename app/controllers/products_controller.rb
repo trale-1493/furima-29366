@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
 
   def create
     Product.create(product_params)
+    redirect_to action: :index
   end
 
 
