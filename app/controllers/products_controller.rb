@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-
+  before_action :move_to_signin, only: [:new, :create]
   def index
   end
 
@@ -21,5 +21,11 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :image, :value, :explain, :category_id, :condition_id,
                                     :delivery_payer_id, :region_id, :delivery_span_id).merge(user_id: current_user.id)
+  end
+
+  def move_to_signin
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    end
   end
 end
