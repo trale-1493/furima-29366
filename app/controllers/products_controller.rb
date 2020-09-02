@@ -8,8 +8,12 @@ class ProductsController < ApplicationController
   end
 
   def create
-    Product.create(product_params)
-    redirect_to action: :index
+    @product = Product.new(product_params)
+    if @product.save
+      redirect_to action: :index
+    else
+      render :new
+    end
   end
 
 
