@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :move_to_signin, only: [:new, :create, :edit, :update]
-  before_action :set_product, only: [:show, :edit, :update]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
   def index
     @products = Product.includes(:user, :purchase)
   end
@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to product_path(@product.id)
+      render :show
     else
       render :new
     end
@@ -27,9 +27,17 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to product_path(@product.id)
+      render :show
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @product.destroy
+      redirect_to root_path
+    else
+      render :show
     end
   end
 
