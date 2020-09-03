@@ -61,10 +61,6 @@ group :development do
   gem 'rubocop', require: false
 end
 
-group :production do
-  gem 'rails_12factor'
-end
-
 gem 'pry-rails'
 
 gem 'devise'
@@ -73,3 +69,7 @@ gem 'active_hash'
 
 gem 'image_magick'
 gem 'image_processing', '~> 1.2'
+
+group :production do
+  gem 'rails_12factor'
+end
