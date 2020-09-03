@@ -14,5 +14,5 @@ class Product < ApplicationRecord
   validates :value, numericality: { only_integer: true, greater_than: 300, less_than: 9_999_999 }
 
   belongs_to :user
-  has_one :purchase
+  has_one :purchase, dependent: :destroy
 end
