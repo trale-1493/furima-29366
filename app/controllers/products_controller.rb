@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :move_to_signin, only: [:new, :create]
+  before_action :move_to_signin, only: [:new, :create, :edit, :update]
+  before_action :check_id
   def index
     @products = Product.includes(:user, :purchase)
   end
@@ -22,7 +23,8 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])    
+    @product = Product.find(params[:id])
+    redirect_to root_path unless current_user.id == @product.user.id
   end
 
   def update
@@ -43,5 +45,9 @@ class ProductsController < ApplicationController
 
   def move_to_signin
     redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def check_id
+
   end
 end
