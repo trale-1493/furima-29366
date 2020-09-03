@@ -44,23 +44,23 @@
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= @product.category[:name] %></td>
+          <td class="detail-value"><%= @product.category.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= @product.condition[:name] %></td>
+          <td class="detail-value"><%= @product.condition.name %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= @product.delivery_payer[:name] %></td>
+          <td class="detail-value"><%= @product.delivery_payer.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= @product.region[:name] %></td>
+          <td class="detail-value"><%= @product.region.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= @product.delivery_span[:name] %></td>
+          <td class="detail-value"><%= @product.delivery_span.name %></td>
         </tr>
       </tbody>
     </table>
