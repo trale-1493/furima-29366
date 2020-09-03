@@ -128,7 +128,7 @@
 
       <% @products.each do |product| %>
         <li class='list'>
-          <%= link_to "#" do %>
+          <%= link_to product_path(product.id) do %>
           <div class='item-img-content'>
             <%= image_tag product.image, class: "item-img" %>
 
@@ -144,7 +144,7 @@
               <%= product.name %>
             </h3>
             <div class='item-price'>
-              <span><%= product.value %>円<br>(税込み)</span>
+              <span><%= product.value.to_s(:delimited, delimiter: ',') %>円<br>(税込み)</span>
               <div class='star-btn'>
                 <%= image_tag "star.png", class:"star-icon" %>
                 <span class='star-count'>0</span>
@@ -182,7 +182,7 @@
 </div>
 <div class='purchase-btn'>
   <span class='purchase-btn-text'>出品する</span>
-  <a href="#">
+  <a href= '/products/new'>
     <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
   </a>
 </div>
