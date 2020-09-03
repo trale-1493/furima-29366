@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
     if product.update(product_params)
       redirect_to product_path(product.id)
     else
-      render :edit
+      redirect_to edit_product_path(product.id)
     end
   end
 
