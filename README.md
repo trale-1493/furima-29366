@@ -1,6 +1,6 @@
 # README
 
-## users テーブル
+## Users テーブル
 | Column           | Type    | Options     |
 | ---------------- | ------- | ----------- |
 | nickname         | string  | null: false |
@@ -17,7 +17,7 @@
 - has_many :comments
 - has_many :favorites
 
-## products テーブル
+## Products テーブル
 | Column         | Type       | Options                         |
 | -------------- | ---------- | ------------------------------- |
 | name           | string     | null: false                     |
@@ -36,7 +36,7 @@
 - has_many :comments
 - has_many :favorites
 
-## purchases テーブル
+## Purchases テーブル
 | Column         | Type       | Options                         |
 | -------------- | ---------- | ------------------------------- |
 | user           | references | null: false, foreign_key: true  |
@@ -46,7 +46,7 @@
 - belongs_to :product
 - has_one :address
 
-## addresses テーブル
+## Addresses テーブル
 | Column           | Type       | Options                         |
 | ---------------- | ---------- | ------------------------------- |
 | postal_code      | string     | null: false                     |
@@ -59,7 +59,7 @@
 ### Association
 - belongs_to :purchase
 
-## comments テーブル
+## Comments テーブル
 | Column  | Type       | Options                         |
 | ------- | ---------- | ------------------------------- |
 | content | text       | null: false                     |
@@ -69,7 +69,7 @@
 - belongs_to :user
 - belongs_to :product
 
-## favorites テーブル
+## Favorites テーブル
 | Column  | Type       | Options                         |
 | ------- | ---------- | ------------------------------- |
 | user    | references | null: false, foreign_key: true  |
