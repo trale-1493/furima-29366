@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :move_to_signin, only: [:new, :create]
   def index
-    @products = Product.includes(:user)
+    @products = Product.includes(:user, :purchase)
   end
 
   def new
