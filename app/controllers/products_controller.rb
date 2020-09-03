@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :move_to_signin, only: [:new, :create, :edit, :update]
-  before_action :set_product, only: [:show, :edit, :update]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
   def index
     @products = Product.includes(:user, :purchase)
   end
@@ -34,11 +34,10 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    product = Product.find(params[:id])
-    if product.destroy
+    if @product.destroy
       redirect_to root_path
     else
-      redirect_to product_path(product.id)
+      render :show
     end
   end
 
