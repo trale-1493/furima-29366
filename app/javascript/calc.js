@@ -12,4 +12,4 @@ function calc() {
     profit_output.innerHTML = profit
   });
 }
-window.addEventListener("load", calc)
+window.addEventListener("DOMContentLoaded", calc)
