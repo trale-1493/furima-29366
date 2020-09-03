@@ -16,16 +16,14 @@ class ProductsController < ApplicationController
     end
   end
 
-
   private
+
   def product_params
     params.require(:product).permit(:name, :image, :value, :explain, :category_id, :condition_id,
                                     :delivery_payer_id, :region_id, :delivery_span_id).merge(user_id: current_user.id)
   end
 
   def move_to_signin
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end

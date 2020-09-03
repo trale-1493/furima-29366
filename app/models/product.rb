@@ -10,7 +10,7 @@ class Product < ApplicationRecord
 
   validates :name, :image, :value, :explain, :category_id,
             :condition_id, :delivery_payer_id, :region_id, :delivery_span_id, presence: true
-  validates :category_id, :condition_id, :delivery_payer_id, :region_id, :delivery_span_id, numericality: {other_than: 1}
-  validates :value, numericality: {only_integer: true, greater_than: 300, less_than: 9999999}
+  validates :category_id, :condition_id, :delivery_payer_id, :region_id, :delivery_span_id, numericality: { other_than: 1 }
+  validates :value, numericality: { only_integer: true, greater_than: 300, less_than: 9_999_999 }
   belongs_to :user
 end
