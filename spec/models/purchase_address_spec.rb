@@ -5,7 +5,7 @@ RSpec.describe PurchaseAddress, type: :model do
     @purchase = FactoryBot.build(:purchase_address)
   end
 
-  describe '商品の購入' do
+  describe '商品の購入履歴の保存' do
     it '必要な情報が揃っていれば購入履歴の保存ができること' do
       expect(@purchase).to be_valid
     end
@@ -40,12 +40,12 @@ RSpec.describe PurchaseAddress, type: :model do
       expect(@purchase.errors.full_messages).to include("City number can't be blank")
     end
 
-    it '建物名は入力されていなくても購入りれきの保存ができる' do
+    it '建物名は入力されていなくても購入履歴の保存ができる' do
       @purchase.building = ""
       expect(@purchase).to be_valid
     end
 
-    it '電話番号が入力されていなければ購入りれきの保存ができない' do
+    it '電話番号が入力されていなければ購入履歴の保存ができない' do
       @purchase.telephone_number = ""
       @purchase.valid?
       expect(@purchase.errors.full_messages).to include("Telephone number can't be blank")
