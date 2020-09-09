@@ -1,12 +1,12 @@
 class PurchasesController < ApplicationController
-
+  before_action :set_product, only: [:index, :create]
+  before_action :move_to_index, only: [:index]
+  
   def index
-    @product = Product.find(params[:product_id])
     @purchase = PurchaseAddress.new
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @purchase = PurchaseAddress.new(purchase_params)
     if @purchase.save
       pay_product
@@ -22,11 +22,6 @@ class PurchasesController < ApplicationController
                                              :building, :telephone_number).merge(token: params[:token], user_id: current_user.id, product_id: @product.id)
   end
 
-  def address_params
-    params.require(:purchase).permit(:postal_code, :region_id, :city, :city_number,
-                                     :building, :telephone_number)
-  end
-
   def pay_product
     Payjp::api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
@@ -34,5 +29,15 @@ class PurchasesController < ApplicationController
       card: params[:token],
       currency: 'jpy'
     )
+  end
+
+  def set_product
+    @product = Product.find(params[:product_id])
+  end
+
+  def move_to_index
+    if @product.purchase || !user_signed_in?
+      redirect_to root_path
+    end
   end
 end
