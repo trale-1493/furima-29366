@@ -50,7 +50,7 @@
 | Column           | Type       | Options                         |
 | ---------------- | ---------- | ------------------------------- |
 | postal_code      | string     | null: false                     |
-| prefecture       | integer    | null: false                     |
+| region           | integer    | null: false                     |
 | city             | string     | null: false                     |
 | city_number      | string     | null: false                     |
 | building         | string     |                                 |
