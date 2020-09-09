@@ -9,7 +9,8 @@ class PurchasesController < ApplicationController
 
   def create
     @purchase = PurchaseAddress.new(purchase_params)
-    if @purchase.save
+    if @purchase.valid?
+      @purchase.save
       pay_product
       redirect_to root_path
     else
