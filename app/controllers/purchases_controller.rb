@@ -1,5 +1,6 @@
-class PurchasesController < ApplicationController
+class PurchasesController < ApplicationController  
   before_action :set_product, only: [:index, :create]
+  before_action :move_to_sign_in, only: [:index]
   before_action :move_to_index, only: [:index]
   
   def index
@@ -35,8 +36,14 @@ class PurchasesController < ApplicationController
     @product = Product.find(params[:product_id])
   end
 
+  def move_to_sign_in
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    end
+  end
+
   def move_to_index
-    if @product.purchase || !user_signed_in?
+    if @product.purchase || @product.user.id == current_user.id
       redirect_to root_path
     end
   end
