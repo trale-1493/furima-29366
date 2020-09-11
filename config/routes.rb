@@ -5,5 +5,9 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :purchases, only: [:index, :create]
+
+    collection do
+      get 'serach'
+    end
   end
 end

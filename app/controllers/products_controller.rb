@@ -5,6 +5,10 @@ class ProductsController < ApplicationController
     @products = Product.includes(:user, :purchase)
   end
 
+  def search
+    
+  end
+
   def new
     @product = Product.new
   end
