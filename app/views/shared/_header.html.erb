@@ -4,6 +4,7 @@
     <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
     <%= form_with url: search_products_path, method: :get, local: true, class: "search-form" do |f| %>
       <%= f.text_field :word, class: "input-box", id: "input-box", placeholder: "キーワードから探す" %>
+      <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
       <%= button_tag type: :submit, class: "search-button" do %>
         <%= image_tag "search.png", class:"search-icon" %>
       <% end %>
