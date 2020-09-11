@@ -6,7 +6,7 @@
     <% if @category_id && @category_id != '1' %>
       <h2 class='category'><%= Category.find(@category_id).name %></h2>
     <% end %>
-    <% if @word %>
+    <% if @word && @word != "" %>
       <h2 class='title'>「<%= @word %>」の検索結果</h2>
     <% end %>
     <ul class='item-lists'>
