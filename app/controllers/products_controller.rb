@@ -6,7 +6,8 @@ class ProductsController < ApplicationController
   end
 
   def search
-    
+    @word = params[:word]
+    @products = Product.search(@word).includes(:user, :purchase)
   end
 
   def new
