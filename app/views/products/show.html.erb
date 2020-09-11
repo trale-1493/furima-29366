@@ -92,12 +92,20 @@
     </form>
   </div>
   <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の商品
-    </a>
-    <a href="#" class="change-item-btn">
-      後ろの商品 ＞
-    </a>
+    <div>
+      <% if @product.prev %>
+        <%= link_to product_path(@product.prev.id), class: "change-item-btn" do %>
+          ＜ 前の商品
+        <% end %>
+      <% end %>
+    </div>
+    <div>
+      <% if @product.next %>
+        <%= link_to product_path(@product.next.id), class: "change-item-btn" do %>
+          後ろの商品 ＞
+        <% end %>
+      <% end %>
+    </div>
   </div>
   <a href="#" class='another-item'><%= "商品のカテゴリー名" %>をもっと見る</a>
 </div>
