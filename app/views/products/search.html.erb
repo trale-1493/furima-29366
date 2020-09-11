@@ -3,12 +3,10 @@
 
   <%# 商品一覧 %>
   <div class='item-contents'>
-    <% if @category_id && @category_id != '1' %>
-      <h2 class='category'><%= Category.find(@category_id).name %></h2>
-    <% end %>
-    <% if @word && @word != "" %>
-      <h2 class='title'>「<%= @word %>」の検索結果</h2>
-    <% end %>
+    <h2 class='title'>
+      <%= @category.name if @category && @category.id != 1%>
+      <%= "「#{@word}」の検索結果" if @word && @word != "" %>
+    </h2>
     <ul class='item-lists'>
 
       <% @products.each do |product| %>

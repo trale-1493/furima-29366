@@ -13,8 +13,8 @@
   <div class='nav'>
     <ul class='lists-left'>
       <li>
-        <% if @category_id && @category_id != '1' %>
-          <%= link_to Category.find(@category_id).name, search_products_path(category_id: @category_id), class: "category-list" %>
+        <% if @category && @category.id != 1 %>
+          <%= link_to @category.name, search_products_path(category_id: @category.id), class: "category-list" %>
         <% else %>
           <%= link_to 'カテゴリー', search_products_path(category_id: 1), class: "category-list" %>
         <% end %>

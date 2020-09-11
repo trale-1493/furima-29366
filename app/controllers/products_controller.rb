@@ -6,9 +6,9 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @category_id = params[:category_id]
+    @category = Category.find(params[:category_id])
     @word = params[:word]
-    @products = Product.search(@word, @category_id).includes(:user, :purchase)
+    @products = Product.search(@word, @category.id).includes(:user, :purchase)
   end
 
   def new
