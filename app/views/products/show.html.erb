@@ -107,7 +107,7 @@
       <% end %>
     </div>
   </div>
-  <a href="#" class='another-item'><%= "商品のカテゴリー名" %>をもっと見る</a>
+  <%= link_to "#{Category.find(@product.category_id).name}をもっと見る", search_products_path(category_id: @product.category_id), class: "another-item" %>
 </div>
 
 <%= render "shared/footer" %>

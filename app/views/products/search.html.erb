@@ -3,8 +3,12 @@
 
   <%# 商品一覧 %>
   <div class='item-contents'>
-    <h2 class='title'>「<%= @word %>」の検索結果</h2>
-    <%= link_to '新規投稿商品', new_product_path, class: "subtitle" %>
+    <% if @category_id && @category_id != '1' %>
+      <h2 class='category'><%= Category.find(@category_id).name %></h2>
+    <% end %>
+    <% if @word %>
+      <h2 class='title'>「<%= @word %>」の検索結果</h2>
+    <% end %>
     <ul class='item-lists'>
 
       <% @products.each do |product| %>
