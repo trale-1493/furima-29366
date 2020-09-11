@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :purchases, only: [:index, :create]
 
     collection do
-      get 'serach'
+      get 'search'
     end
   end
 end
