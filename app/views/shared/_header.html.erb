@@ -12,7 +12,13 @@
   </div>
   <div class='nav'>
     <ul class='lists-left'>
-      <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
+      <li>
+        <% if @category_id && @category_id != '1' %>
+          <%= link_to Category.find(@category_id).name, search_products_path(category_id: @category_id), class: "category-list" %>
+        <% else %>
+          <%= link_to 'カテゴリー', search_products_path(category_id: 1), class: "category-list" %>
+        <% end %>
+      </li>
       <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
     </ul>
     <ul class='lists-right'>
