@@ -15,4 +15,13 @@ class Product < ApplicationRecord
 
   belongs_to :user
   has_one :purchase, dependent: :destroy
+
+  def next
+    Product.where("id > ?", self.id).order("id ASC").first
+  end
+
+  def prev
+    Product.where("id < ?", self.id).order("id DESC").first    
+  end
+
 end
