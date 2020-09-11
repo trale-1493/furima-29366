@@ -73,6 +73,7 @@
   text-decoration: none;
   margin-right: 3vw;
   color: #333333;
+  position: relative;
 }
 
 .brand-list {
@@ -110,4 +111,22 @@
 .sign-up {
   text-decoration: none;
   color: #333333;
+}
+
+.category-links{
+  position: absolute;
+  overflow: auto;
+}
+
+.category-link{
+  width: 280px;
+  background-color: #ffffff;
+  border: 0.5px solid lightgray;
+  font-size: 12px;
+
+  padding: 10px;
+}
+
+.hidden{
+  display: none;
 }

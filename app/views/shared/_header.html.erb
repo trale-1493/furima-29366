@@ -12,12 +12,21 @@
   </div>
   <div class='nav'>
     <ul class='lists-left'>
-      <li>
-        <% if @category && @category.id != 1 %>
-          <%= link_to @category.name, search_products_path(category_id: @category.id), class: "category-list" %>
-        <% else %>
-          <%= link_to 'カテゴリー', search_products_path(category_id: 1), class: "category-list" %>
-        <% end %>
+      <li class='category-list', id='category-list'>
+        <%# if @category && @category.id != 1 %>
+          <%# @category.name %>
+        <%# else %>
+          カテゴリー▼
+        <%# end %>
+        <ul class='category-links hidden', id='category-links' >
+          <%  Category.all.each do  |category| %>
+            <% unless category.id == 1 %>
+              <li class='category-link'>
+                <%= link_to category.name, search_products_path(category_id: category.id), class: "category-list"%>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
       </li>
       <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
     </ul>
