@@ -6,8 +6,11 @@ class ProductsController < ApplicationController
   end
 
   def search
+    unless @category_id
+      @category_id = 1
+    end
     @word = params[:word]
-    @products = Product.search(@word).includes(:user, :purchase)
+    @products = Product.search(@word, @category_id).includes(:user, :purchase)
   end
 
   def new
