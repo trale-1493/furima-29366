@@ -1,0 +1,48 @@
+<%= render "shared/header" %>
+<div class='main'>
+
+  <%# 商品一覧 %>
+  <div class='item-contents'>
+    <h2 class='title'>「<%= @word %>」の検索結果</h2>
+    <%= link_to '新規投稿商品', new_product_path, class: "subtitle" %>
+    <ul class='item-lists'>
+
+      <% @products.each do |product| %>
+        <li class='list'>
+          <%= link_to product_path(product.id) do %>
+          <div class='item-img-content'>
+            <%= image_tag product.image, class: "item-img" %>
+
+            <% if product.purchase %>
+              <div class='sold-out'>
+                <span>Sold Out!!</span>
+              </div>
+            <% end %>
+
+          </div>
+          <div class='item-info'>
+            <h3 class='item-name'>
+              <%= product.name %>
+            </h3>
+            <div class='item-price'>
+              <span><%= product.value.to_s(:delimited, delimiter: ',') %>円<br>(税込み)</span>
+              <div class='star-btn'>
+                <%= image_tag "star.png", class:"star-icon" %>
+                <span class='star-count'>0</span>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <%# /商品一覧 %>
+</div>
+<div class='purchase-btn'>
+  <span class='purchase-btn-text'>出品する</span>
+  <a href= '/products/new'>
+    <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+  </a>
+</div>
+<%= render "shared/footer" %>
