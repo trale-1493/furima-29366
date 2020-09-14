@@ -1,45 +1,47 @@
 <%# CSS・・・assets/stylesheets/shared/header.css %>
 <header class='top-page-header'>
-  <div class='search-bar-contents'>
-    <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
-    <%= form_with url: search_products_path, method: :get, local: true, class: "search-form" do |f| %>
-      <%= f.text_field :word, class: "input-box", id: "input-box", placeholder: "キーワードから探す" %>
-      <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
-      <%= button_tag type: :submit, class: "search-button" do %>
-        <%= image_tag "search.png", class:"search-icon" %>
+  <div class='top-page-header-contents'>
+    <div class='search-bar-contents'>
+      <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
+      <%= form_with url: search_products_path, method: :get, local: true, class: "search-form" do |f| %>
+        <%= f.text_field :word, class: "input-box", id: "input-box", placeholder: "キーワードから探す" %>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <%= button_tag type: :submit, class: "search-button" do %>
+          <%= image_tag "search.png", class:"search-icon" %>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-  <div class='nav'>
-    <ul class='lists-left'>
-      <li class='category-list', id='category-list'>
-        <%# if @category && @category.id != 1 %>
-          <%# @category.name %>
-        <%# else %>
-          カテゴリー▽
-        <%# end %>
-        <ul class='category-links hidden', id='category-links' >
-          <%  Category.all.each do |category| %>
-            <% unless category.id == 1 %>
-              <li>
-                <%= link_to(search_products_path(category_id: category.id)) do %>
-                  <div class='category-link'><%= category.name %></div>
-                <% end %>
-              </li>
+    </div>
+    <div class='nav'>
+      <ul class='lists-left'>
+        <li class='category-list', id='category-list'>
+          <%# if @category && @category.id != 1 %>
+            <%# @category.name %>
+          <%# else %>
+            カテゴリー▽
+          <%# end %>
+          <ul class='category-links hidden', id='category-links' >
+            <%  Category.all.each do |category| %>
+              <% unless category.id == 1 %>
+                <li>
+                  <%= link_to(search_products_path(category_id: category.id)) do %>
+                    <div class='category-link'><%= category.name %></div>
+                  <% end %>
+                </li>
+              <% end %>
             <% end %>
-          <% end %>
-        </ul>
-      </li>
-      <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
-    </ul>
-    <ul class='lists-right'>
-      <% if user_signed_in? %>
-        <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete, class: "logout" %></li>
-      <% else %>
-        <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-        <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-      <% end %>
-    </ul>
+          </ul>
+        </li>
+        <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
+      </ul>
+      <ul class='lists-right'>
+        <% if user_signed_in? %>
+          <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete, class: "logout" %></li>
+        <% else %>
+          <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </header>

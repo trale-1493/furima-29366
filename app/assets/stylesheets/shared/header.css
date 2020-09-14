@@ -3,10 +3,17 @@
 }
 
 .top-page-header {
+  height: 15vh;
+}
+
+.top-page-header-contents {
   width: 100vw;
   padding: 2vh 15vw;
+  background-color: white;
   display: flex;
   flex-direction: column;
+  position: fixed;
+  z-index: 1;
 }
 
 .search-bar-contents {
