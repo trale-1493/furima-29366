@@ -1,39 +1,145 @@
 <%= render "shared/header" %>
 
-
 <div class='user-show'>
-  <div class='center-line'></div>
+  <!-- ユーザー情報の表示 -->
+  <div class='user-show-box'>
+    <!-- ユーザ情報要素 -->
+    <div class='user-info'>
+      <div class='user-image'>
+      </div>
 
-  <div class='user-info'>
-    <div class='user-image'>
+      <div class='user-nickname-box'>
+        <span class='nickname'><%= @user.nickname %></span>
+      </div>
+      <div class='user-email'>
+        <%= @user.email %>
+      </div>
     </div>
 
-    <div class='user-nickname-box'>
-      <span class='nickname'><%= @user.nickname.strip %></span>
+    <!-- プロフィール要素 -->
+    <div class="user-profile">
+      <div class="profile-introduction">
+          <span>ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章<br>
+                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章<br>
+                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章<br>
+                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章<br>
+                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章<br>
+                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章<br>
+                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章<br></span>
+      </div>
+      <!-- プロフィール表 -->
+      <div class='profile-contents'>
+        <table class='profile-table'>
+          <tr>
+            <th class='profile-element'>
+            誕生日
+            </th>
+            <td class='profile-value'>
+            2020/4/9
+            </td>
+          </tr>
+          <tr>
+            <th class='profile-element'>
+              趣味
+            </th>
+            <td class='profile-value'>
+              衆議院解散
+            </td>
+          </tr>
+          <tr>
+            <th class='profile-element'>
+              座右の銘
+            </th>
+            <td class='profile-value'>
+              朝酒は門田を売っても飲め
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
-    <div class='user-email'>
-      <%= @user.email %>
+
+    <!-- ユーザーの出品した商品一覧 -->
+    <div class='user-exhibit'>
+      <h2 class='user-profile-header'> 
+        <%= @user.nickname %>さんの出品した商品
+      </h2>
+
+      <div class='exhibited-products-box'>
+        <ul class='lists'>
+
+          <% @user.products.each do |product| %>
+            <li class='list'>
+              <%= link_to product_path(product.id) do %>
+              <div class='item-img-content'>
+                <%= image_tag product.image, class: "item-img" %>
+
+                <% if product.purchase %>
+                  <div class='sold-out'>
+                    <span>Sold Out!!</span>
+                  </div>
+                <% end %>
+
+              </div>
+              <div class='item-info'>
+                <h3 class='item-name'>
+                  <%= product.name %>
+                </h3>
+                <div class='item-price'>
+                  <span><%= product.value.to_s(:delimited, delimiter: ',') %>円<br>(税込み)</span>
+                  <div class='star-btn'>
+                    <%= image_tag "star.png", class:"star-icon" %>
+                    <span class='star-count'>0</span>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
 
-  <div class="user-profile">
-    <div class="profile-introduction">
-        <span>ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章<span>
-    </div>
+    <!-- ユーザーの購入した商品一覧 -->
+    <% if current_user.id == @user.id %>
+      <div class='user-purchase'>
+        <h2 class='user-profile-header'> 
+          <%= @user.nickname %>さんの購入履歴
+        </h2>
+        <div class='purchased-products-box'>
+          <ul class='lists'>
 
-    <table class='profile-table'>
+            <% @purchased_products.each do |product| %>
+              <li class='list'>
+                <%= link_to product_path(product.id) do %>
+                <div class='item-img-content'>
+                  <%= image_tag product.image, class: "item-img" %>
 
+                  <% if product.purchase %>
+                    <div class='sold-out'>
+                      <span>Sold Out!!</span>
+                    </div>
+                  <% end %>
 
-    </table>
-  </div>
-
-  <div class="user-exhibit">
-  </div>
-
-  <div class="user-purchase">
+                </div>
+                <div class='item-info'>
+                  <h3 class='item-name'>
+                    <%= product.name %>
+                  </h3>
+                  <div class='item-price'>
+                    <span><%= product.value.to_s(:delimited, delimiter: ',') %>円<br>(税込み)</span>
+                    <div class='star-btn'>
+                      <%= image_tag "star.png", class:"star-icon" %>
+                      <span class='star-count'>0</span>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
-
-<%= @user.nickname %>
-
 <%= render "shared/footer" %>
