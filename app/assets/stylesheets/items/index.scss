@@ -237,6 +237,13 @@ a {
   font-weight: bold;
 }
 
+.item-contents>.category {
+  font-size: 4vh;
+  margin: 1vh 0;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .item-lists {
   width: 100vw;
   display: flex;

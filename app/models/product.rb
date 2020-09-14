@@ -16,6 +16,20 @@ class Product < ApplicationRecord
   belongs_to :user
   has_one :purchase, dependent: :destroy
 
+  def self.search(word, category_id)
+    if word
+      products = Product.where('name LIKE(?)', "%#{word}%")
+    else
+      products = Product.all
+    end
+
+    if category_id && category_id != '1'
+      products = products.where('category_id = ?', category_id)
+    end
+    
+    return products
+  end
+
   def next
     Product.where("id > ?", self.id).order("id ASC").first
   end
