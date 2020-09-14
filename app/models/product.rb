@@ -23,7 +23,7 @@ class Product < ApplicationRecord
       products = Product.all
     end
 
-    unless category_id == 1
+    if category_id && category_id != '1'
       products = products.where('category_id = ?', category_id)
     end
     
