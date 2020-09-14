@@ -119,7 +119,9 @@
 }
 
 .category-link{
-  width: 280px;
+  text-decoration: none;
+  width: 200px;
+  color: #333333;
   background-color: #ffffff;
   border: 0.5px solid lightgray;
   font-size: 12px;

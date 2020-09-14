@@ -16,13 +16,15 @@
         <%# if @category && @category.id != 1 %>
           <%# @category.name %>
         <%# else %>
-          カテゴリー▼
+          カテゴリー▽
         <%# end %>
         <ul class='category-links hidden', id='category-links' >
-          <%  Category.all.each do  |category| %>
+          <%  Category.all.each do |category| %>
             <% unless category.id == 1 %>
-              <li class='category-link'>
-                <%= link_to category.name, search_products_path(category_id: category.id), class: "category-list"%>
+              <li>
+                <%= link_to(search_products_path(category_id: category.id)) do %>
+                  <div class='category-link'><%= category.name %></div>
+                <% end %>
               </li>
             <% end %>
           <% end %>
