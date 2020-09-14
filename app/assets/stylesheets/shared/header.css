@@ -3,12 +3,12 @@
 }
 
 .top-page-header {
-  height: 15vh;
+  height: 14vh;
 }
 
 .top-page-header-contents {
   width: 100vw;
-  height: 15vh;
+  height: 14vh;
   padding: 2vh 15vw;
   background-color: white;
   border-bottom: 1px solid lightgray;
