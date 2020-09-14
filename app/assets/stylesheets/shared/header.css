@@ -8,8 +8,10 @@
 
 .top-page-header-contents {
   width: 100vw;
+  height: 15vh;
   padding: 2vh 15vw;
   background-color: white;
+  border-bottom: 1px solid lightgray;
   display: flex;
   flex-direction: column;
   position: fixed;
