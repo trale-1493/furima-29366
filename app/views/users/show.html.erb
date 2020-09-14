@@ -1,31 +1,38 @@
 <%= render "shared/header" %>
 
-<%= @user.nickname %>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<div class='user-show'>
+  <div class='center-line'></div>
+
+  <div class='user-info'>
+    <div class='user-image'>
+    </div>
+
+    <div class='user-nickname-box'>
+      <span class='nickname'><%= @user.nickname.strip %></span>
+    </div>
+    <div class='user-email'>
+      <%= @user.email %>
+    </div>
+  </div>
+
+  <div class="user-profile">
+    <div class="profile-introduction">
+        <span>ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章<span>
+    </div>
+
+    <table class='profile-table'>
+
+
+    </table>
+  </div>
+
+  <div class="user-exhibit">
+  </div>
+
+  <div class="user-purchase">
+  </div>
+</div>
 
 <%= @user.nickname %>
 
