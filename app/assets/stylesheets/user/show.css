@@ -113,7 +113,6 @@
 }
 
 .exhibited-products-box>.lists {
-  background-color: orchid;
   display: flex;
   overflow: scroll;
 }
@@ -138,8 +137,19 @@
   overflow: scroll;
 }
 
-.purchased-products-box>.lists>.list {
+.purchased-product {
   width: 37vh;
   padding: 1vw;
   background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+}
+
+.purchased-product>.created_at{
+  line-height: 36px;
+  background-color: lightgray;
+  width: 100%;
+  min-width: 250px;
+  font-size: 16px;
+  padding-left: 10px;
 }

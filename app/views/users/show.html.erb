@@ -32,10 +32,10 @@
         <table class='profile-table'>
           <tr>
             <th class='profile-element'>
-            誕生日
+              誕生日
             </th>
             <td class='profile-value'>
-            2020/4/9
+              <%= @user.birthday.year%>年<%= @user.birthday.month%>月<%= @user.birthday.day%>日
             </td>
           </tr>
           <tr>
@@ -82,9 +82,13 @@
         </h2>
         <div class='purchased-products-box'>
           <ul class='lists'>
-
-            <% @purchased_products.each do |product| %>
-              <%= render partial: "shared/product", locals: {product: product} %>
+            <% @purchases.each do |purchase| %>
+              <div class='purchased-product'>
+                <span class='created_at'>
+                  購入日：<%=purchase.created_at.year%>年<%=purchase.created_at.month%>月<%=purchase.created_at.day%>日
+                </span>
+                <%= render partial: "shared/product", locals: {product: purchase.product} %>
+              </div>
             <% end %>
           </ul>
         </div>
