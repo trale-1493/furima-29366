@@ -6,7 +6,7 @@
     <!-- ユーザ情報要素 -->
     <div class='user-info'>
       <div class='user-image'>
-        <% if @user.profile && @user.profile.image %>
+        <% if @user.profile && @user.profile.image.attached? %>
           <%= image_tag @user.profile.image, class:"image" %>
         <% else %>
           <div class='no-image-box'>
@@ -58,7 +58,7 @@
             </tr>
           </table>
         </div>
-        <%= link_to 'プロフィールを編集する', edit_user_profile_path(@user.id) if @user.id == current_user.id %> 
+        <%= link_to 'プロフィールを編集する', edit_user_profile_path(@user.id, @user.profile.id) if @user.id == current_user.id %> 
       </div>
       <% else %>
         <h2 class='no-profile'>プロフィールが未設定です。</h2>

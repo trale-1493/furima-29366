@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_new_profile, only: [:new, :create]
   before_action :set_profile, only: [:edit, :update]
+  before_action :move_to_root, only: [:new, :create, :edit, :update]
   def new
   end
 
@@ -35,5 +36,11 @@ class ProfilesController < ApplicationController
 
   def set_profile
     @profile = Profile.find(params[:id])
+  end
+
+  def move_to_root
+    if !user_signed_in? || current_user.id != @profile.user.id
+      redirect_to root_path
+    end
   end
 end
