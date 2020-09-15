@@ -16,11 +16,16 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-
+    @profile = Profile.find(params[:id])
   end
 
   def update
-
+    @profile = Profile.find(params[:id])
+    if @profile.update(profile_params)
+      redirect_to user_path(params[:user_id])
+    else
+      render :edit
+    end
   end
 
   private
