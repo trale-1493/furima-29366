@@ -12,7 +12,7 @@
 .user-show-box{
   width: 70vw;
   min-width: 1200px;
-  background-color: white;
+  background-color: #ffffff;
 
   padding: 10vh 15vw;
   display: flex;
@@ -21,7 +21,6 @@
 }
 
 .user-info{
-  background-color: navajowhite;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,12 +31,30 @@
 .user-info>.user-image{
   width: 200px;
   height: 200px;
-  background-color: lightgreen;
+  background-color: lightgray;
   border-radius: 50%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-info>.user-image>.image{
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;  
+}
+
+.no-image-box{
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+
+  text-align: center;
 }
 
 .user-nickname-box{
-  background-color: lightpink;
   text-align: center;
   margin-top: 10px;
   padding: 10px;
@@ -48,14 +65,12 @@
 }
 
 .user-email{
-  background-color: lightsalmon;
   font-size: 14px;
   margin: 10px 0 30px;
 }
 
 .user-profile{
   width: 100%;
-  background-color: limegreen;
 }
 
 .profile-introduction{
@@ -63,8 +78,6 @@
 }
 
 .profile-contents{
-  background-color: mediumpurple;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,13 +87,11 @@
 
 .profile-table{
   width: 100%;
-  background-color: maroon;
-
 }
 
 .profile-element{
   width: 20%;
-  background-color: pink;
+  background-color: #eee;
   border: 1px solid #dedede;
   font-size: 14px;
   text-align: center;
@@ -90,11 +101,14 @@
 
 .profile-value{
   width: 80%;
-  background-color: lightblue;
   border: 1px solid #dedede;
   font-size: 14px;
 
   padding: 20px 10px;
+}
+
+.no-profile{
+  font-size: 32px;
 }
 
 .user-exhibit{

@@ -6,6 +6,13 @@
     <!-- ユーザ情報要素 -->
     <div class='user-info'>
       <div class='user-image'>
+        <%# if user.profile.image %>
+          <%# image_tag "no_image.jpeg", class:"image" %>
+        <%# else %>
+          <div class='no-image-box'>
+            <span class='no-image'>NO IMAGE</span>
+          </div>
+        <%# end %>        
       </div>
 
       <div class='user-nickname-box'>
@@ -17,48 +24,53 @@
     </div>
 
     <!-- プロフィール要素 -->
-    <div class="user-profile">
-      <div class="profile-introduction">
-          <span>ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章<br>
-                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章<br>
-                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章<br>
-                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章<br>
-                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章<br>
-                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章<br>
-                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章<br></span>
+    <%# if @user.profile %>
+      <div class="user-profile">
+        <div class="profile-introduction">
+          <span>ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章
+                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章
+                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章
+                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章
+                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章
+                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章
+                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章</span>
+        </div>
+        
+        <div class='profile-contents'>
+          <table class='profile-table'>
+            <tr>
+              <th class='profile-element'>
+                誕生日
+              </th>
+              <td class='profile-value'>
+                <%= @user.birthday.year%>年<%= @user.birthday.month%>月<%= @user.birthday.day%>日
+              </td>
+            </tr>
+            <tr>
+              <th class='profile-element'>
+                趣味
+              </th>
+              <td class='profile-value'>
+                衆議院解散
+              </td>
+            </tr>
+            <tr>
+              <th class='profile-element'>
+                座右の銘
+              </th>
+              <td class='profile-value'>
+                朝酒は門田を売っても飲め
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
-      <!-- プロフィール表 -->
-      <div class='profile-contents'>
-        <table class='profile-table'>
-          <tr>
-            <th class='profile-element'>
-              誕生日
-            </th>
-            <td class='profile-value'>
-              <%= @user.birthday.year%>年<%= @user.birthday.month%>月<%= @user.birthday.day%>日
-            </td>
-          </tr>
-          <tr>
-            <th class='profile-element'>
-              趣味
-            </th>
-            <td class='profile-value'>
-              衆議院解散
-            </td>
-          </tr>
-          <tr>
-            <th class='profile-element'>
-              座右の銘
-            </th>
-            <td class='profile-value'>
-              朝酒は門田を売っても飲め
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
-
-    <!-- ユーザーの出品した商品一覧 -->
+      <%# else %>
+        <h2 class='no-profile'>プロフィールが未設定です。</h2>
+        <div> 
+          <%= link_to 'プロフィールを作成する', '#' if @user.id == current_user.id %> 
+        </div>
+      <%# end %>  
     <div class='user-exhibit'>
       <h2 class='user-profile-header'> 
         <%= @user.nickname %>さんの出品した商品
@@ -96,4 +108,5 @@
     <% end %>
   </div>
 </div>
+
 <%= render "shared/footer" %>
