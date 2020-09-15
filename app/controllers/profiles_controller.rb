@@ -39,7 +39,7 @@ class ProfilesController < ApplicationController
   end
 
   def move_to_root
-    if !user_signed_in? || current_user.id != @profile.user.id
+    unless user_signed_in? && current_user.id == @profile.user.id
       redirect_to root_path
     end
   end
