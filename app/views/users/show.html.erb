@@ -6,13 +6,13 @@
     <!-- ユーザ情報要素 -->
     <div class='user-info'>
       <div class='user-image'>
-        <%# if user.profile.image %>
-          <%# image_tag "no_image.jpeg", class:"image" %>
-        <%# else %>
+        <% if @user.profile.image %>
+          <%= image_tag @user.profile.image, class:"image" %>
+        <% else %>
           <div class='no-image-box'>
             <span class='no-image'>NO IMAGE</span>
           </div>
-        <%# end %>        
+        <% end %>        
       </div>
 
       <div class='user-nickname-box'>
@@ -24,16 +24,10 @@
     </div>
 
     <!-- プロフィール要素 -->
-    <%# if @user.profile %>
+    <% if @user.profile %>
       <div class="user-profile">
         <div class="profile-introduction">
-          <span>ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章
-                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章
-                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章
-                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章
-                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章
-                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章
-                ユーザーがじゃぶじゃぶ課金したくなるような射幸心を煽りまくる説明文章</span>
+          <span><%=@user.profile.introduction%></span>
         </div>
         
         <div class='profile-contents'>
@@ -51,7 +45,7 @@
                 趣味
               </th>
               <td class='profile-value'>
-                衆議院解散
+                <%= @user.profile.hobby %>
               </td>
             </tr>
             <tr>
@@ -59,18 +53,18 @@
                 座右の銘
               </th>
               <td class='profile-value'>
-                朝酒は門田を売っても飲め
+                <%= @user.profile.life_word %>%
               </td>
             </tr>
           </table>
         </div>
       </div>
-      <%# else %>
+      <% else %>
         <h2 class='no-profile'>プロフィールが未設定です。</h2>
         <div> 
           <%= link_to 'プロフィールを作成する', new_user_profile_path(@user.id) if @user.id == current_user.id %> 
         </div>
-      <%# end %>  
+      <% end %>  
     <div class='user-exhibit'>
       <h2 class='user-profile-header'> 
         <%= @user.nickname %>さんの出品した商品
