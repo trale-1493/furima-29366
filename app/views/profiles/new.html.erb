@@ -28,15 +28,15 @@
         <div class="weight-bold-text">
           紹介文
         </div>
-        <%= f.text_area :introduction, class:"profiles-text", id:"profile-intro", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :introduction, class:"profiles-text", id:"profile-intro", placeholder:"自己紹介（1,000文字まで）主な取扱商品や出品時の対応に関して 例）使い古した洋服を主に取り扱っています。配送料は基本的に着払いでお願いしています。" ,rows:"7" ,maxlength:"1000" %>
         <div class="weight-bold-text">
           趣味
         </div>
-        <%= f.text_area :hobby, class:"profiles-text", id:"profile-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+        <%= f.text_area :hobby, class:"profiles-text", id:"profile-name", placeholder:"趣味（必須 40文字まで)", maxlength:"40" %>
         <div class="weight-bold-text">
           座右の銘
         </div>
-        <%= f.text_area :life_word, class:"profiles-text", id:"profile-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+        <%= f.text_area :life_word, class:"profiles-text", id:"profile-name", placeholder:"座右の銘（必須 40文字まで)", maxlength:"40" %>
       </div>
     </div>
     <%# /商品名と商品説明 %>
@@ -44,7 +44,7 @@
     <%# 下部ボタン %>
     <div class="post-btn-contents">
       <%= f.submit "プロフィールを登録する" ,class:"post-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
+      <%=link_to 'もどる', user_path(@profile.user_id), class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
   </div>
