@@ -98,6 +98,12 @@
   font-size: 14px;
 }
 
+.detail-value>.value-link{
+  text-decoration: none;
+  color: #3CCACE;
+  font-weight: bold;
+}
+
 .option {
   display: flex;
   justify-content: space-between;

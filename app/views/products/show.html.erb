@@ -34,13 +34,17 @@
     <% end %>
 
     <div class="item-explain-box">
-      <span><%= @product.explain %></span>
+      <span><%= simple_format(@product.explain) %></span>
     </div>
     <table class="detail-table">
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= @product.user.nickname %></td>
+          <td class="detail-value">
+            <%= @product.user.nickname %>
+            &nbsp&nbsp
+            <%= link_to '>> 他の出品商品を見る', user_path(@product.user.id), class: "value-link" %>
+          </td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>

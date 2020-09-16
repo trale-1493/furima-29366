@@ -1,0 +1,119 @@
+<%= render "shared/header" %>
+
+<div class='user-show'>
+  <!-- ユーザー情報の表示 -->
+  <div class='user-show-box'>
+    <!-- ユーザ情報要素 -->
+    <div class='user-info'>
+      <div class='user-image'>
+        <% if @user.profile && @user.profile.image.attached? %>
+          <%= image_tag @user.profile.image, class:"image" %>
+        <% else %>
+          <div class='no-image-box'>
+            <span class='no-image'>NO IMAGE</span>
+          </div>
+        <% end %>        
+      </div>
+
+      <% if @user.id == current_user.id %>
+        <div class='user-name-box'>
+          <span class='nickname'><%= @user.nickname %></span>
+          <br>
+          <span class='realname'>-<%= @user.family_name + @user.first_name %>-</span>
+        </div>
+        <div class='user-email'>
+          <%= @user.email %>
+        </div>
+      <% else %>
+        <div class='user-name-box'>
+          <span class='nickname'><%= @user.nickname %></span>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- プロフィール要素 -->
+    <div class="user-profile">
+      <% if @user.profile %>
+        <div class="profile-introduction">
+          <span><%=simple_format(@user.profile.introduction)%></span>
+        </div>
+        
+        <div class='profile-contents-box'>
+          <table class='profile-table'>
+            <tr>
+              <th class='profile-element'>
+                誕生日
+              </th>
+              <td class='profile-value'>
+                <%= @user.birthday.year%>年<%= @user.birthday.month%>月<%= @user.birthday.day%>日
+              </td>
+            </tr>
+            <tr>
+              <th class='profile-element'>
+                趣味
+              </th>
+              <td class='profile-value'>
+                <%= @user.profile.hobby %>
+              </td>
+            </tr>
+            <tr>
+              <th class='profile-element'>
+                座右の銘
+              </th>
+              <td class='profile-value'>
+                <%= @user.profile.life_word %>
+              </td>
+            </tr>
+          </table>          
+        </div>
+        <div class='profile-btns-box'>
+          <%= link_to 'プロフィールを編集する', edit_user_profile_path(@user.id, @user.profile.id), class:'new-profile-btn' if @user.id == current_user.id %> 
+        </div>
+      <% else %>
+        <h2 class='no-profile'>プロフィールが未設定です。</h2>
+        <div class='profile-btns-box'>
+          <%= link_to 'プロフィールを作成する', new_user_profile_path(@user.id), class:"edit-profile-btn" if @user.id == current_user.id %> 
+        </div>
+      <% end %>
+    </div>
+   
+    <!-- 出品商品一覧 --> 
+    <div class='user-exhibit'>
+      <h2 class='user-profile-header'> 
+        <%= @user.nickname %>さんの出品した商品
+      </h2>
+
+      <div class='exhibited-products-box'>
+        <ul class='lists'>
+
+          <% @user.products.each do |product| %>
+            <%= render partial: "shared/product", locals: {product: product} %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ユーザーの購入した商品一覧 -->
+    <% if current_user.id == @user.id %>
+      <div class='user-purchase'>
+        <h2 class='user-profile-header'> 
+          <%= @user.nickname %>さんの購入履歴
+        </h2>
+        <div class='purchased-products-box'>
+          <ul class='lists'>
+            <% @purchases.each do |purchase| %>
+              <div class='purchased-product'>
+                <span class='created_at'>
+                  購入日：<%=purchase.created_at.year%>年<%=purchase.created_at.month%>月<%=purchase.created_at.day%>日
+                </span>
+                <%= render partial: "shared/product", locals: {product: purchase.product} %>
+              </div>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

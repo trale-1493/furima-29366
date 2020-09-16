@@ -1,0 +1,64 @@
+<div class="profile-contents">
+  <header class="profile-header">
+    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+
+  </header>
+  <div class="profile-main">
+    <h2 class="profile-title">プロフィール情報を入力</h2>
+    <%= form_with model: @profile, url: user_profiles_path(@profile.id), method: :post, local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+
+    <%# 出品画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        プロフィール画像
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+    <%# /出品画像 %>
+    <%# 商品名と商品説明 %>
+    <div class="new-profiles">
+      <div class="profiles-elements">
+        <div class="weight-bold-text">
+          紹介文
+        </div>
+        <%= f.text_area :introduction, class:"profiles-text", id:"profile-intro", placeholder:"自己紹介（1,000文字まで）主な取扱商品や出品時の対応に関して 例）使い古した洋服を主に取り扱っています。配送料は基本的に着払いでお願いしています。" ,rows:"7" ,maxlength:"1000" %>
+        <div class="weight-bold-text">
+          趣味
+        </div>
+        <%= f.text_area :hobby, class:"profiles-text", id:"profile-name", placeholder:"趣味（必須 40文字まで)", maxlength:"40" %>
+        <div class="weight-bold-text">
+          座右の銘
+        </div>
+        <%= f.text_area :life_word, class:"profiles-text", id:"profile-name", placeholder:"座右の銘（必須 40文字まで)", maxlength:"40" %>
+      </div>
+    </div>
+    <%# /商品名と商品説明 %>
+
+    <%# 下部ボタン %>
+    <div class="post-btn-contents">
+      <%= f.submit "プロフィールを登録する" ,class:"post-btn" %>
+      <%=link_to 'もどる', user_path(@profile.user_id), class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+  </div>
+  <% end %>
+
+  <footer class="items-sell-footer">
+    <ul class="menu">
+      <li><a href="#">プライバシーポリシー</a></li>
+      <li><a href="#">フリマ利用規約</a></li>
+      <li><a href="#">特定商取引に関する表記</a></li>
+    </ul>
+    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+    <p class="inc">
+      ©︎Furima,Inc.
+    </p>
+  </footer>
+</div>
