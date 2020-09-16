@@ -1,11 +1,12 @@
 class ProfilesController < ApplicationController
-  before_action :set_new_profile, only: [:new, :create]
   before_action :set_profile, only: [:edit, :update]
   before_action :move_to_root, only: [:new, :create, :edit, :update]
   def new
+    @profile = User.find(params[:user_id]).build_profile
   end
 
   def create
+    @profile = User.find(params[:user_id]).build_profile(profile_params)
     if @profile.save
       redirect_to user_path(params[:user_id])
     else
@@ -29,17 +30,12 @@ class ProfilesController < ApplicationController
     params.require(:profile).permit(:image, :introduction, :hobby, :life_word)
   end
 
-  def set_new_profile
-    user = User.find(params[:user_id])
-    @profile = user.build_profile
-  end
-
   def set_profile
     @profile = Profile.find(params[:id])
   end
 
   def move_to_root
-    unless user_signed_in? && current_user.id == @profile.user.id
+    unless user_signed_in? && current_user.id == params[:user_id].to_i
       redirect_to root_path
     end
   end
