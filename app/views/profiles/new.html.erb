@@ -5,7 +5,7 @@
   </header>
   <div class="profile-main">
     <h2 class="profile-title">プロフィール情報を入力</h2>
-    <%= form_with model: @profile, url: user_profiles_path(@profile.id), method: :post, local: true do |f| %>
+    <%= form_with model: @profile, url: user_profiles_path(@profile.user.id), method: :post, local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
 
