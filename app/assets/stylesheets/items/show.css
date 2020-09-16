@@ -100,7 +100,8 @@
 
 .detail-value>.value-link{
   text-decoration: none;
-  color: #333333;
+  color: #3CCACE;
+  font-weight: bold;
 }
 
 .option {
