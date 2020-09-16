@@ -71,18 +71,20 @@
 
 .user-profile{
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  
 }
 
 .profile-introduction{
   padding: 20px 20px;
 }
 
-.profile-contents{
+.profile-table-box{
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px 0;
-
 }
 
 .profile-table{
@@ -95,7 +97,6 @@
   border: 1px solid #dedede;
   font-size: 14px;
   text-align: center;
-
   padding: 20px 10px;
 }
 
@@ -109,6 +110,39 @@
 
 .no-profile{
   font-size: 32px;
+  
+  text-align: center;
+}
+
+.profile-btns-box{
+  display: flex;
+  justify-content: center;
+}
+
+.new-profile-btn {  
+  width: 60%;
+  color: #FFF;
+  background-color: #3ccace;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+
+  margin: 20px;
+  padding: 10px;
+}
+
+.edit-profile-btn {  
+  width: 60%;
+  color: #FFF;
+  background-color: crimson;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+
+  margin: 20px;
+  padding: 10px;
 }
 
 .user-exhibit{

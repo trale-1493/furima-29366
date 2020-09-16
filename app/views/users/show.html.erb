@@ -24,13 +24,13 @@
     </div>
 
     <!-- プロフィール要素 -->
-    <% if @user.profile %>
-      <div class="user-profile">
+    <div class="user-profile">
+      <% if @user.profile %>
         <div class="profile-introduction">
-          <span><%=@user.profile.introduction%></span>
+          <span><%=simple_format(@user.profile.introduction)%></span>
         </div>
         
-        <div class='profile-contents'>
+        <div class='profile-contents-box'>
           <table class='profile-table'>
             <tr>
               <th class='profile-element'>
@@ -56,16 +56,20 @@
                 <%= @user.profile.life_word %>
               </td>
             </tr>
-          </table>
+          </table>          
         </div>
-        <%= link_to 'プロフィールを編集する', edit_user_profile_path(@user.id, @user.profile.id) if @user.id == current_user.id %> 
-      </div>
+        <div class='profile-btns-box'>
+          <%= link_to 'プロフィールを編集する', edit_user_profile_path(@user.id, @user.profile.id), class:'new-profile-btn' if @user.id == current_user.id %> 
+        </div>
       <% else %>
         <h2 class='no-profile'>プロフィールが未設定です。</h2>
-        <div> 
-          <%= link_to 'プロフィールを作成する', new_user_profile_path(@user.id) if @user.id == current_user.id %> 
+        <div class='profile-btns-box'>
+          <%= link_to 'プロフィールを作成する', new_user_profile_path(@user.id), class:"edit-profile-btn" if @user.id == current_user.id %> 
         </div>
-      <% end %>  
+      <% end %>
+    </div>
+   
+    <!-- 出品商品一覧 --> 
     <div class='user-exhibit'>
       <h2 class='user-profile-header'> 
         <%= @user.nickname %>さんの出品した商品

@@ -34,7 +34,7 @@
     <% end %>
 
     <div class="item-explain-box">
-      <span><%= @product.explain %></span>
+      <span><%= simple_format(@product.explain) %></span>
     </div>
     <table class="detail-table">
       <tbody>
