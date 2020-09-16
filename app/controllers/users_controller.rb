@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
 
   def show
-    @user = User.select(:id, :nickname, :email, :birthday).find(params[:id])
-
-    if @user.id == current_user.id
+    if params[:id].to_i == current_user.id
+      @user = User.find(params[:id])      
       @purchases = @user.purchases.includes(:product)
+    else
+      @user = User.select(:id, :nickname, :birthday).find(params[:id])      
     end
   end
 end

@@ -14,7 +14,7 @@
   min-width: 1200px;
   background-color: #ffffff;
 
-  padding: 10vh 15vw;
+  padding: 0 15vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,8 +29,8 @@
 }
 
 .user-info>.user-image{
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   background-color: lightgray;
   border-radius: 50%;
 
@@ -41,8 +41,8 @@
 }
 
 .user-info>.user-image>.image{
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   border-radius: 100%;  
 }
 
@@ -54,14 +54,19 @@
   text-align: center;
 }
 
-.user-nickname-box{
+.user-name-box{
   text-align: center;
   margin-top: 10px;
   padding: 10px;
 }
 
-.user-nickname-box>.nickname{
+.user-name-box>.nickname{
   font-size: 32px;
+}
+
+.user-name-box>.realname{
+  font-size: 20px;
+  color: rgb(150, 150, 150);
 }
 
 .user-email{

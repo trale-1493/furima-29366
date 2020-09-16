@@ -15,12 +15,20 @@
         <% end %>        
       </div>
 
-      <div class='user-nickname-box'>
-        <span class='nickname'><%= @user.nickname %></span>
-      </div>
-      <div class='user-email'>
-        <%= @user.email %>
-      </div>
+      <% if @user.id == current_user.id %>
+        <div class='user-name-box'>
+          <span class='nickname'><%= @user.nickname %></span>
+          <br>
+          <span class='realname'>-<%= @user.family_name + @user.first_name %>-</span>
+        </div>
+        <div class='user-email'>
+          <%= @user.email %>
+        </div>
+      <% else %>
+        <div class='user-name-box'>
+          <span class='nickname'><%= @user.nickname %></span>
+        </div>
+      <% end %>
     </div>
 
     <!-- プロフィール要素 -->
